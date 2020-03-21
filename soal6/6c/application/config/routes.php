@@ -17,5 +17,6 @@ $route['table'] = 'controller/table';
     (:any) is used to determine the relevant segments in all characters
 */ 
 
-// EXAMPLE
-// $route['profile/(:num)'] = 'controller/profile/$1';
+// Product
+$route['delete/(:num)'] = 'controller/delete/$1';
+$route['add'] = 'controller/add';

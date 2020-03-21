@@ -14,7 +14,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <form class="form-inline my-2 mx-auto w-75">
-                    <input class="form-control mr-sm-2 w-100" type="search" placeholder="Search..." aria-label="Search">
+                    <input class="form-control mr-sm-2 w-100 nav-form" type="search" placeholder="Search..." aria-label="Search">
                 </form>
                 <button class="btn btn-warning my-2 my-sm-0 shadow-sm" type="submit" data-toggle="modal" data-target="#addModal">ADD</button>
             </div>
@@ -35,73 +35,61 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Pevita Pearce</td>
-                    <td>Latte</td>
-                    <td>Drink</td>
-                    <td>Rp.10,0000</td>
-                    <td>
-                        <a href="" data-toggle="modal" data-target="#editModal"><img src="<?= asset_url().'img/edit.png'?>" alt="edit" width="20"></a>
-                        <a href="" data-toggle="modal" data-target="#deleteModal" data-id="#1" data-name="Pevita Pearce"><img class="ml-3" src="<?=asset_url().'img/trash.png';?>" alt="trash" width="20"></a>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Raisa Andriana</td>
-                    <td>Cake</td>
-                    <td>Food</td>
-                    <td>Rp.15,0000</td>
-                    <td>
-                        <a href="" data-toggle="modal" data-target="#editModal"><img src="<?= asset_url().'img/edit.png'?>" alt="edit" width="20"></a>
-                        <a href="" data-toggle="modal" data-target="#deleteModal" data-id="#2" data-name="Raisa Andriana"><img class="ml-3" src="<?=asset_url().'img/trash.png';?>" alt="trash" width="20"></a>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Raisa Andriana</td>
-                    <td>Fried Rice</td>
-                    <td>Food</td>
-                    <td>Rp.30,0000</td>
-                    <td>
-                        <a href="" data-toggle="modal" data-target="#editModal"><img src="<?= asset_url().'img/edit.png'?>" alt="edit" width="20"></a>
-                        <a href="" data-toggle="modal" data-target="#deleteModal" data-id="#3" data-name="Raisa Andriana"><img class="ml-3" src="<?=asset_url().'img/trash.png';?>" alt="trash" width="20"></a>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Pevita Pearce</td>
-                    <td>Gudeg</td>
-                    <td>Food</td>
-                    <td>Rp.35,0000</td>
-                    <td>
-                        <a href="" data-toggle="modal" data-target="#editModal"><img src="<?= asset_url().'img/edit.png'?>" alt="edit" width="20"></a>
-                        <a href="" data-toggle="modal" data-target="#deleteModal" data-id="#4" data-name="Pevita Pearce"><img class="ml-3" src="<?=asset_url().'img/trash.png';?>" alt="trash" width="20"></a>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>Joko Purwadhi</td>
-                    <td>Ice Tea</td>
-                    <td>Drink</td>
-                    <td>Rp.55,0000</td>
-                    <td>
-                        <a href="" data-toggle="modal" data-target="#editModal"><img src="<?= asset_url().'img/edit.png'?>" alt="edit" width="20"></a>
-                        <a href="" data-toggle="modal" data-target="#deleteModal" data-id="#5" data-name="Joko Purwadhi"><img class="ml-3" src="<?=asset_url().'img/trash.png';?>" alt="trash" width="20"></a>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">6</th>
-                    <td>Bilkis Ismail</td>
-                    <td>Takoyaki</td>
-                    <td>Food</td>
-                    <td>Rp.10,0000</td>
-                    <td>
-                        <a href="" data-toggle="modal" data-target="#editModal"><img src="<?= asset_url().'img/edit.png'?>" alt="edit" width="20"></a>
-                        <a href="" data-toggle="modal" data-target="#deleteModal" data-id="#6" data-name="Bilkis Ismail"><img class="ml-3" src="<?=asset_url().'img/trash.png';?>" alt="trash" width="20"></a>
-                    </td>
-                </tr>
-
+                <?php foreach ($product as $key) : ?>
+                    <tr>
+                        <th scope="row"><?= $key->id ?></th>
+                        <td><?= $key->cashier_name ?></td>
+                        <td><?= $key->product_name ?></td>
+                        <td><?= $key->category_name ?></td>
+                        <td>Rp.<?= $key->product_price ?></td>
+                        <td>
+                            <a href="" data-toggle="modal" data-target="#editModal"><img src="<?= asset_url() . 'img/edit.png' ?>" alt="edit" width="20"></a>
+                            <a href="<?= base_url('delete/' . $key->id) ?>"><img class="ml-3" src="<?= asset_url() . 'img/trash.png'; ?>" alt="trash" width="20"></a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
+    </div>
+
+
+    <!-- ADD MODAL -->
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title font-weight-bold" id="addModalLabel">ADD</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="text-danger">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="<?= base_url('/add') ?>">
+                        <div class="form-group">
+                            <select class="form-control" id="Cashier" name="cashier" required>
+                                <option disabled selected>-- Pilih Kasir --</option>
+                                <?php foreach ($cashier as $key) : ?>
+                                    <option value="<?= $key->id ?>"><?= $key->name ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" id="Category" name="category" required>
+                                <option disabled selected>-- Pilih Kategori --</option>
+                                <?php foreach ($category as $key) : ?>
+                                    <option value="<?= $key->id ?>"><?= $key->name ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="produk" placeholder="Nama Produk ..." name="product" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="harga" placeholder="Harga Produk ..." name="harga" required >
+                        </div>
+                        <button type="submit" class="btn btn-warning shadow-sm float-right">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
