@@ -20,9 +20,10 @@ function profile(name, age) {
             coreldraw   : "advance",
             adobe_xd    : "advance",
             wordpress   : "advanced",
+            javascript  : "beginner",
             jquery  : "advanced",
             react   : "beginner",
-            flutter: "beginner",
+            flutter : "beginner",
         },
         interest_in_coding  : true
 
