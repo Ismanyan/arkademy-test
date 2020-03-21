@@ -65,6 +65,33 @@ class Controller extends CI_Controller
         }
     }
 
+    // Get data edit
+    public function getEdit($id) {
+        $ress = $this->controllermodel->getEdit($id);
+        echo json_encode($ress,TRUE);
+    }
+
+    // Get data edit
+    public function editProduct()
+    {
+        $data['id']  = htmlspecialchars($this->input->post('id', TRUE));
+        $data['id_cashier']  = htmlspecialchars($this->input->post('cashier', TRUE));
+        $data['id_category'] = htmlspecialchars($this->input->post('category', TRUE));
+        $data['name']        = htmlspecialchars($this->input->post('produk', TRUE));
+        $data['price']       = htmlspecialchars($this->input->post('harga', TRUE));
+
+        if (is_numeric($data['price']) && is_numeric($data['id'])) {
+            $edit = $this->controllermodel->editProduct($data);
+            if ($edit === 1) {
+                notif('success', 'Data Berhasil diubah', '', '/');
+            } else {
+                notif('error', 'Data Gagal diubah', '', '/');
+            }
+        } else {
+            notif('warning', 'Data Gagal ditambah', 'Hanya bisa memasukan angka pada harga', '/');
+        }
+    }
+
     // 404 Not Found
     public function page_not_found()
     {

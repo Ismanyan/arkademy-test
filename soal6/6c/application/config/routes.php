@@ -20,3 +20,5 @@ $route['table'] = 'controller/table';
 // Product
 $route['delete/(:num)'] = 'controller/delete/$1';
 $route['add'] = 'controller/add';
+$route['get/edit/(:num)'] = 'controller/getEdit/$1';
+$route['edit'] = 'controller/editProduct';

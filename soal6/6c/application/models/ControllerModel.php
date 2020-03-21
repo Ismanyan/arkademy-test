@@ -32,6 +32,21 @@ class ControllerModel extends CI_Model
         return $this->db->affected_rows();
     }
 
+    // Get Data Edit
+    public function getEdit($id) {
+        $this->db->where('id', $id);
+        $query = $this->db->get('product')->result();
+        return $query;
+    }
+
+    // Edit Product
+    public function editProduct($data) {
+        $this->db->where('id', $data['id']);
+        $this->db->update('product', $data);
+
+        return $this->db->affected_rows();
+    }
+
     // Delete Product
     public function deleteProduct($id) {
         $this->db->where('id', $id);
