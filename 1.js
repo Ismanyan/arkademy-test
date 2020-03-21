@@ -17,9 +17,12 @@ function profile(name, age) {
             laravel : "advanced",
             codeigniter : "advanced",
             bootstrap   : "advanced",
+            coreldraw   : "advance",
+            adobe_xd    : "advance",
+            wordpress   : "advanced",
             jquery  : "advanced",
             react   : "beginner",
-            flutter: "beginner"
+            flutter: "beginner",
         },
         interest_in_coding  : true
 
