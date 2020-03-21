@@ -22,10 +22,10 @@ class Controller extends CI_Controller
     public function index()
     {
         // Use notif
-        notif('success','Welcome to kubicode', 'This is the message from Home/index');
+        // notif('success','Welcome to kubicode', 'This is the message from Home/index');
         
         // Data for send to view
-        $data['title'] = 'Home | Kubi Code';
+        $data['title'] = 'Home | Arkademy Test';
         
         // Load view
         $this->load->view('layouts/header',$data);

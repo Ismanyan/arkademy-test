@@ -1,0 +1,22 @@
+.form-control::placeholder {
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+.form-inline .form-control {
+    background-color: #CECECE;
+}
+
+.btn-warning {
+    background-color: #ffeeba;
+    border-color: #ffeeba;
+}
+
+.btn-warning:hover {
+    background-color: #e0c77a;
+    border-color: #e0c77a;
+}
+
+.rounded-table {
+    border-radius: 20px;
+}
